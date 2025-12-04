@@ -1,25 +1,25 @@
 {
   "version": 3,
-  "created_at": "2025-12-04T15:08:49.110255+00:00",
-  "height": 2931991,
-  "cmu_count": 1042353,
-  "block_hash": "000004d0f0dff74ae19069df10d31a7be81f56a5b80743b0dfae86a04504bbf6",
-  "tree_root": "0420702a31d0e12a6cefd8a9cbb0de6297996bcabe4f4194d241bfb9b05ce2c3",
+  "created_at": "2025-12-04T15:18:47.724673+00:00",
+  "height": 2932223,
+  "cmu_count": 1042367,
+  "block_hash": "0000027415df6fd835ba7d5b1200235358f63be577b9fb83f84376c7dc51e077",
+  "tree_root": "318351c2e5e5d47e1f92ba4eb27e989f6835de678a8602e1d27a65b2eeafb9ec",
   "files": {
     "uncompressed": {
       "name": "commitment_tree.bin",
-      "size": 0,
-      "sha256": ""
+      "size": 33355752,
+      "sha256": "ebe5a2dc3a12495e34e94f4ba3bf9918672812c438e6608b6f0ad6c5e6fd62fa"
     },
     "compressed": {
       "name": "commitment_tree.bin.zst",
-      "size": 33356083,
-      "sha256": "eeb348351dc1443be22b2bab094bc19fe3385d602a1feae0ed8dc68f0a5c397b"
+      "size": 33356531,
+      "sha256": "c9b6eb87b6f464421a506d4fe62544e6106a6171ab02a9609386e28cf5b2ede3"
     },
     "serialized": {
       "name": "commitment_tree_serialized.bin",
-      "size": 478,
-      "sha256": "ecdc32d7bed0a69a77f3e59d27839ffb018f75f808f49b427f4d9577a5fc817f"
+      "size": 574,
+      "sha256": "b2d02848c5b6a896214a9cb3e56805ef8bea2e3b2d508c866cfcabdee3813060"
     }
   }
 }
