@@ -1,0 +1,73 @@
+{
+  "format": "zipherx_boost_v1",
+  "version": 1,
+  "created_at": "2025-12-06T11:14:01.279733+00:00",
+  "chain_height": 2934280,
+  "sapling_activation": 476969,
+  "tree_root": "4c1a7cd6ac0cb2e4dc716dbd346472eb13f3c9a184391325559f23f0ebb82664",
+  "block_hash": "00000429fb219838ac0b0d54a4e753a0ddd568dc8b955521cf9980bd46cbfb06",
+  "output_count": 134992,
+  "spend_count": 94501,
+  "files": {
+    "uncompressed": {
+      "name": "zipherx_boost_v1.bin",
+      "size": 116068781,
+      "sha256": "e5c633682e6f675df3606c5f0f6593a255a71e0d7578b686158f7c088701f600"
+    },
+    "compressed": {
+      "name": "zipherx_boost_v1.bin.zst",
+      "size": 0,
+      "sha256": null
+    }
+  },
+  "sections": [
+    {
+      "type": 1,
+      "offset": 464,
+      "size": 88014784,
+      "count": 134992,
+      "start_height": 476969,
+      "end_height": 2934280
+    },
+    {
+      "type": 2,
+      "offset": 88015248,
+      "size": 3402036,
+      "count": 94501,
+      "start_height": 476969,
+      "end_height": 2934280
+    },
+    {
+      "type": 3,
+      "offset": 91417284,
+      "size": 20215264,
+      "count": 631727,
+      "start_height": 476969,
+      "end_height": 2934280
+    },
+    {
+      "type": 4,
+      "offset": 111632548,
+      "size": 4434784,
+      "count": 1108696,
+      "start_height": 0,
+      "end_height": 2934280
+    },
+    {
+      "type": 5,
+      "offset": 116067332,
+      "size": 380,
+      "count": 1,
+      "start_height": 2934280,
+      "end_height": 2934280
+    },
+    {
+      "type": 6,
+      "offset": 116067712,
+      "size": 1069,
+      "count": 1,
+      "start_height": 0,
+      "end_height": 0
+    }
+  ]
+}
