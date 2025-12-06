@@ -25,3 +25,11 @@ commitment_tree.bin
 
 # Backups directory
 backups/
+
+# Large files - distributed via GitHub Releases only
+block_hashes.bin
+block_timestamps.bin
+commitment_tree.bin
+commitment_tree.bin.zst
+shielded_outputs.bin
+shielded_outputs.bin.zst

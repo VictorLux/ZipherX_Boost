@@ -2,12 +2,12 @@
   "version": 3,
   "block_hashes": {
     "file": "block_hashes.bin",
-    "sha256": "a26017bae2a61298adea0072733dd081eb2180e308f3ed640a90519e4b97489f",
-    "count": 2457083,
+    "sha256": "0ed7e95cb81ec361d222d6d862a43fe754e83e251a3216d5f178d46db38f9f74",
+    "count": 2457162,
     "start_height": 476969,
-    "end_height": 2934051,
-    "file_size": 78626672,
-    "updated_at": "2025-12-06T05:34:17.515987+00:00"
+    "end_height": 2934130,
+    "file_size": 78629200,
+    "updated_at": "2025-12-06T07:41:15.183059+00:00"
   },
   "height": 2926122
 }
