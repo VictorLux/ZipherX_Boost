@@ -4,6 +4,14 @@ Public repository containing pre-computed blockchain data for [ZipherX](https://
 
 > *"Privacy is necessary for an open society in the electronic age."* - A Cypherpunk's Manifesto
 
+## Current Status
+
+| Metric | Value |
+|--------|-------|
+| **Chain Height** | 2,934,051 |
+| **CMU Count** | 1,042,467 |
+| **Last Updated** | 2025-12-06 06:34 UTC |
+
 ## Contents
 
 This repository hosts pre-computed cryptographic data that allows ZipherX wallet to sync faster:
@@ -11,15 +19,15 @@ This repository hosts pre-computed cryptographic data that allows ZipherX wallet
 ### Commitment Tree Files
 | File | Description | Size | In Git | In Releases |
 |------|-------------|------|--------|-------------|
-| `commitment_tree.bin.zst` | Compressed CMU data for position lookup | ~33 MB | Yes | Yes |
-| `commitment_tree_serialized.bin` | Serialized Sapling tree frontier (instant load) | ~500 bytes | Yes | Yes |
+| `commitment_tree.bin.zst` | Compressed CMU data for position lookup | ~32 MB | Yes | Yes |
+| `commitment_tree_serialized.bin` | Serialized Sapling tree frontier (instant load) | ~382 bytes | Yes | Yes |
 | `commitment_tree_manifest.json` | Metadata, height, CMU count, SHA256 checksums | ~1 KB | Yes | Yes |
 
 ### Block Data Files
 | File | Description | Size | In Git | In Releases |
 |------|-------------|------|--------|-------------|
-| `block_hashes.bin` | Block hashes from Sapling activation | ~78 MB | Yes | Yes |
-| `block_timestamps.bin` | Block timestamps from genesis | ~12 MB | Yes | Yes |
+| `block_hashes.bin` | Block hashes from Sapling activation | ~75 MB | Yes | Yes |
+| `block_timestamps.bin` | Block timestamps from genesis | ~11 MB | Yes | Yes |
 | `block_timestamps_manifest.json` | Timestamps metadata and checksum | ~200 bytes | Yes | Yes |
 
 ### Network Files
@@ -37,8 +45,8 @@ This repository hosts pre-computed cryptographic data that allows ZipherX wallet
 
 ZipherX downloads the **compressed** `.zst` file from GitHub Releases:
 
-1. **New wallets**: Download `commitment_tree_serialized.bin` (~500 bytes) for instant startup
-2. **Imported wallets**: Download `commitment_tree.bin.zst` (~33 MB), decompress locally, verify checksum
+1. **New wallets**: Download `commitment_tree_serialized.bin` (~382 bytes) for instant startup
+2. **Imported wallets**: Download `commitment_tree.bin.zst` (~32 MB), decompress locally, verify checksum
 3. **Timestamps**: Download `block_timestamps.bin` for accurate transaction dates
 4. **Block hashes**: Download `block_hashes.bin` for P2P block validation
 
@@ -71,7 +79,7 @@ All files include SHA-256 checksums in manifests. ZipherX verifies these checksu
 
 ```bash
 # Get the expected tree root from a Zclassic node at the checkpoint height
-zclassic-cli getblockheader $(zclassic-cli getblockhash HEIGHT) | grep finalsaplingroot
+zclassic-cli getblockheader $(zclassic-cli getblockhash 2934051) | grep finalsaplingroot
 
 # Compare with the tree_root in commitment_tree_manifest.json
 ```
