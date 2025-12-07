@@ -1,66 +1,66 @@
 {
   "format": "zipherx_boost_v1",
   "version": 1,
-  "created_at": "2025-12-07T08:17:59.281774+00:00",
-  "chain_height": 2935268,
+  "created_at": "2025-12-07T13:22:40.024140+00:00",
+  "chain_height": 2935513,
   "sapling_activation": 476969,
-  "output_count": 1042536,
-  "spend_count": 431880,
-  "block_hash": "000003d0100e65b486e3af98e9825edd808641824ca64bb7a72ab6d3d8e43636",
-  "tree_root": "42911deac4be9e18489faecea30c05f116b6a89f868e5aa3502311fb1ef6f630",
+  "output_count": 1042551,
+  "spend_count": 431892,
+  "block_hash": "000000651e9055aed19ed75442df15dec1f245045e62231f02b8b5293b0a782b",
+  "tree_root": "452f5610f5dd1fddf3478a69945d8bc7a2dc51f707db57a31be4ccb1ed015524",
   "files": {
     "uncompressed": {
       "name": "zipherx_boost_v1.bin",
-      "size": 783780753,
-      "sha256": "f1e94bf4f13d0c8633887c1e2d02ab7f6c09afe6621c463e239c00785ea02c12"
+      "size": 783799765,
+      "sha256": "01fa41851bd42c753eef68bc143a7ba7bcd4dd3a5c5555588855eae4861a4019"
     }
   },
   "sections": [
     {
       "type": 1,
       "offset": 128,
-      "size": 679733472,
-      "count": 1042536,
+      "size": 679743252,
+      "count": 1042551,
       "start_height": 476969,
-      "end_height": 2935268
+      "end_height": 2935513
     },
     {
       "type": 2,
-      "offset": 679733600,
-      "size": 15547680,
-      "count": 431880,
+      "offset": 679743380,
+      "size": 15548112,
+      "count": 431892,
       "start_height": 476969,
-      "end_height": 2935268
+      "end_height": 2935513
     },
     {
       "type": 3,
-      "offset": 695281280,
-      "size": 78665600,
-      "count": 2458300,
+      "offset": 695291492,
+      "size": 78673440,
+      "count": 2458545,
       "start_height": 476969,
-      "end_height": 2935268
+      "end_height": 2935513
     },
     {
       "type": 4,
-      "offset": 773946880,
-      "size": 9833200,
-      "count": 2458300,
+      "offset": 773964932,
+      "size": 9834180,
+      "count": 2458545,
       "start_height": 476969,
-      "end_height": 2935268
+      "end_height": 2935513
     },
     {
       "type": 5,
-      "offset": 783780080,
+      "offset": 783799112,
       "size": 478,
       "count": 1,
       "start_height": 476969,
-      "end_height": 2935268
+      "end_height": 2935513
     },
     {
       "type": 6,
-      "offset": 783780558,
-      "size": 195,
-      "count": 9,
+      "offset": 783799590,
+      "size": 175,
+      "count": 8,
       "start_height": 0,
       "end_height": 0
     }
