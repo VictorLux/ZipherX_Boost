@@ -8,9 +8,9 @@ A single, comprehensive blockchain data file for instant ZipherX wallet synchron
 |----------|-------|
 | **Format** | ZBOOST01 (Unified Binary) |
 | **Version** | 1 |
-| **Chain Height** | 2,934,130 |
-| **File Size** | ~496 MB (uncompressed) |
-| **Created** | 2025-12-06 |
+| **Chain Height** | 2,935,263 |
+| **File Size** | 747.5 MB (uncompressed) |
+| **Created** | 2025-12-07 |
 
 ## What's Inside?
 
@@ -18,12 +18,11 @@ The unified boost file contains **all data** needed for fast wallet synchronizat
 
 | Section | Count | Description |
 |---------|-------|-------------|
-| **Shielded Outputs** | 645,482 | Encrypted notes for trial decryption |
-| **Shielded Spends** | 258,606 | Nullifiers for spent note detection |
-| **Block Hashes** | 2,457,162 | For P2P header validation (Sapling onwards) |
-| **Block Timestamps** | 2,934,131 | For transaction date display |
-| **Serialized Tree** | 1 | Merkle commitment tree frontier |
-| **Reliable Peers** | 1 | P2P bootstrap addresses |
+| **Shielded Outputs** | 1,042,535 | Encrypted notes for trial decryption |
+| **Shielded Spends** | 431,879 | Nullifiers for spent note detection |
+| **Block Hashes** | 2,458,295 | For P2P header validation (Sapling onwards) |
+| **Block Timestamps** | 2,458,295 | For transaction date display |
+| **Reliable Peers** | 8 | P2P bootstrap addresses |
 
 ## File Format Specification
 
@@ -37,47 +36,32 @@ The unified boost file contains **all data** needed for fast wallet synchronizat
 | 20 | 8 | Sapling Height | Sapling activation (476,969) |
 | 28 | 32 | Tree Root | Commitment tree root hash |
 | 60 | 32 | Block Hash | Hash at chain height |
-| 92 | 4 | Section Count | Number of sections (6) |
+| 92 | 4 | Section Count | Number of sections |
 | 96 | 8 | Created At | Unix timestamp |
 | 104 | 24 | Reserved | Padding for future use |
-
-### Section Table (56 bytes per section)
-
-Immediately follows header. Each entry:
-
-| Offset | Size | Field | Description |
-|--------|------|-------|-------------|
-| 0 | 4 | Type | Section type ID |
-| 4 | 8 | Offset | Byte offset in file |
-| 12 | 8 | Size | Section data size in bytes |
-| 20 | 8 | Count | Number of records |
-| 28 | 8 | Start Height | First block height |
-| 36 | 8 | End Height | Last block height |
-| 44 | 12 | Reserved | Padding |
 
 ### Section Types
 
 | ID | Name | Record Size | Description |
 |----|------|-------------|-------------|
-| 1 | Outputs | 652 bytes | height(4) + tx_idx(2) + out_idx(2) + cmu(32) + epk(32) + ciphertext(580) |
+| 1 | Outputs | 652 bytes | height(4) + index(4) + cmu(32) + epk(32) + ciphertext(580) |
 | 2 | Spends | 36 bytes | height(4) + nullifier(32) |
 | 3 | Hashes | 32 bytes | Block hash in wire format (little-endian) |
 | 4 | Timestamps | 4 bytes | Unix timestamp (uint32 LE) |
-| 5 | Tree | Variable | Serialized commitment tree frontier |
-| 6 | Peers | Variable | JSON array of peer addresses |
+| 6 | Peers | Variable | Peer addresses |
 
 ### Section Data Layout
 
 ```
 [Header: 128 bytes]
-[Section Table: 6 × 56 = 336 bytes]
-[Outputs Data: 645,482 × 652 = ~401 MB]
-[Spends Data: 258,606 × 36 = ~9 MB]
-[Hashes Data: 2,457,162 × 32 = ~75 MB]
-[Timestamps Data: 2,934,131 × 4 = ~11 MB]
-[Tree Data: ~414 bytes]
-[Peers Data: ~1 KB]
+[Outputs Data: 1,042,535 × 652 = ~679.7 MB]
+[Spends Data: 431,879 × 36 = ~15.5 MB]
+[Hashes Data: 2,458,295 × 32 = ~78.7 MB]
+[Timestamps Data: 2,458,295 × 4 = ~9.8 MB]
+[Peers Data: 175 bytes]
 ```
+
+**Total: ~747.5 MB**
 
 ## Byte Order Convention
 
@@ -95,11 +79,10 @@ All multi-byte integers are **little-endian** (matching wire format):
 
 | Section | Start Height | End Height | Notes |
 |---------|--------------|------------|-------|
-| Outputs | 476,969 | 2,934,130 | From Sapling activation |
-| Spends | 476,969 | 2,934,130 | From Sapling activation |
-| Hashes | 476,969 | 2,934,130 | From Sapling (no pre-Sapling hashes) |
-| Timestamps | 0 | 2,934,130 | From genesis block |
-| Tree | 2,934,130 | 2,934,130 | At chain tip |
+| Outputs | 476,969 | 2,935,263 | From Sapling activation |
+| Spends | 476,969 | 2,935,263 | From Sapling activation |
+| Hashes | 476,969 | 2,935,263 | From Sapling (no pre-Sapling hashes) |
+| Timestamps | 476,969 | 2,935,263 | From Sapling activation |
 
 ## Verification
 
@@ -109,6 +92,7 @@ shasum -a 256 -c SHA256SUMS.txt
 
 # Or manually
 shasum -a 256 zipherx_boost_v1.bin
+# Expected: 5b53209343856d29c55dad4651872c8184df5382e5304ae274d7429bbcfe8a77
 ```
 
 ## Usage
@@ -124,14 +108,14 @@ The ZipherX wallet automatically:
 
 When importing a private key, the wallet:
 
-1. Downloads the unified boost file (~496 MB)
+1. Downloads the unified boost file (~747 MB)
 2. Uses parallel note decryption (Rayon) for fast scanning
 3. Computes nullifiers to detect spent notes
 4. Builds witnesses for spendable notes
 
 ### For New Wallets
 
-New wallets only need the serialized tree section (~414 bytes) since there are no historical notes to find.
+New wallets skip historical note scanning since there are no notes to find - only recent blocks are synced.
 
 ## Technical Details
 
@@ -140,18 +124,17 @@ New wallets only need the serialized tree section (~414 bytes) since there are n
 | Property | Value |
 |----------|-------|
 | Sapling Activation | 476,969 |
-| Tree Root | `66698f156b865a7872853e5b2862bb78cc4c1fa2aa6aab99aa2b89cdb35e6e5e` |
-| Block Hash | `0000034ce99a8a33945932adf0a04d70e5b5ecc6d9dc9ac3f95afeb9447f9e6e` |
+| Chain Height | 2,935,263 |
+| Block Hash | `0000054d42ae4a43987a00d2c693d9f55070e5783ef4df1d083c95e8bcbf8d27` |
 
 ### Shielded Output Record (652 bytes)
 
 ```
 struct ShieldedOutput {
-    height: u32,        // 4 bytes - Block height
-    tx_index: u16,      // 2 bytes - Transaction index in block
-    out_index: u16,     // 2 bytes - Output index in transaction
-    cmu: [u8; 32],      // 32 bytes - Note commitment
-    epk: [u8; 32],      // 32 bytes - Ephemeral public key
+    height: u32,           // 4 bytes - Block height
+    index: u32,            // 4 bytes - Output index
+    cmu: [u8; 32],         // 32 bytes - Note commitment (wire format)
+    epk: [u8; 32],         // 32 bytes - Ephemeral public key (wire format)
     ciphertext: [u8; 580], // 580 bytes - Encrypted note
 }
 ```
@@ -160,36 +143,27 @@ struct ShieldedOutput {
 
 ```
 struct ShieldedSpend {
-    height: u32,        // 4 bytes - Block height
-    nullifier: [u8; 32], // 32 bytes - Nullifier
+    height: u32,           // 4 bytes - Block height
+    nullifier: [u8; 32],   // 32 bytes - Nullifier (wire format)
 }
 ```
 
-## Migration from Legacy Files
+## Generation Statistics
 
-This unified format replaces the following legacy files:
-
-| Legacy File | Size | Now In |
-|-------------|------|--------|
-| shielded_outputs.bin | ~430 MB | Section 1 (Outputs) + Section 2 (Spends) |
-| block_hashes.bin | ~75 MB | Section 3 (Hashes) |
-| block_timestamps.bin | ~11 MB | Section 4 (Timestamps) |
-| commitment_tree_serialized.bin | ~414 B | Section 5 (Tree) |
-| reliable_peers.json | ~1 KB | Section 6 (Peers) |
-
-**Benefits of unified format:**
-- Single HTTP request instead of 5+
-- Atomic updates (all-or-nothing)
-- Consistent checksums
-- Simpler caching logic
-- Reduced GitHub API calls
+| Metric | Value |
+|--------|-------|
+| Generation Speed | 2,616 blocks/sec |
+| Total Blocks Scanned | 2,458,295 |
+| Generation Time | 15.7 minutes |
+| RPC Batch Size | 200 blocks |
+| Worker Threads | 48 |
 
 ## GitHub Release
 
 The unified boost file is distributed via GitHub Releases:
 
 - **Repository**: VictorLux/ZipherX_Boost
-- **Release Tag**: v{height}-unified
+- **Release Tag**: v2935263-unified
 - **Files**: zipherx_boost_v1.bin, zipherx_boost_manifest.json, SHA256SUMS.txt
 
 ---
