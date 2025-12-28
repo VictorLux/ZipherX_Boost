@@ -1,64 +1,69 @@
 {
   "format": "zipherx_boost_v1",
-  "version": 1,
-  "created_at": "2025-12-27T14:55:35.748803+00:00",
-  "chain_height": 2957885,
+  "version": 2,
+  "created_at": "2025-12-28T08:14:45.352300+00:00",
+  "chain_height": 2958708,
   "sapling_activation": 476969,
-  "output_count": 1043793,
-  "spend_count": 433101,
-  "block_hash": "00000506d568751a6b747ec1d3ab036d9db556c46a7cb31420a34aa25e6e1581",
-  "tree_root": "68a6f50b529f1110177e7ee25c3af7496d075961083e2415b188f6a7f5189f5f",
+  "output_count": 1043840,
+  "spend_count": 433151,
+  "block_hash": "00000a70ed575d9765350b56e57edf16778e403d7de22bebbc7d2eb0bdbd5860",
+  "tree_root": "2be27ee772c9b3cd8aa337b7029af2bc79ebf994a18bb3f75910755c9aa474e6",
   "files": {
     "uncompressed": {
       "name": "zipherx_boost_v1.bin",
-      "size": 2279657512,
-      "sha256": "c3b674f38c4c4180eef5e3bb1d96abfde7454a75e10ec65f647e33090f37ca97"
+      "size": 2280168914,
+      "sha256": "f1e61c390839ba1eff3e1c86b763de6dfff470b6467a4ad6285f5bf1a0bee131"
+    },
+    "compressed": {
+      "name": "zipherx_boost_v1.bin.zst",
+      "size": 2123877325,
+      "sha256": "f4e24be8664d2c29fce36542cc1f9aaad4cae78364dba43cdbc5d77f05b9e32e"
     }
   },
   "sections": [
     {
       "type": 1,
       "offset": 128,
-      "size": 713954412,
-      "count": 1043793,
+      "size": 713986560,
+      "count": 1043840,
       "start_height": 476969,
-      "end_height": 2957885
+      "end_height": 2958708
     },
     {
       "type": 2,
-      "offset": 713954540,
-      "size": 29450868,
-      "count": 433101,
+      "offset": 713986688,
+      "size": 29454268,
+      "count": 433151,
       "start_height": 476969,
-      "end_height": 2957885
+      "end_height": 2958708
     },
     {
       "type": 3,
-      "offset": 743405408,
-      "size": 79389344,
-      "count": 2480917,
+      "offset": 743440956,
+      "size": 79415680,
+      "count": 2481740,
       "start_height": 476969,
-      "end_height": 2957885
+      "end_height": 2958708
     },
     {
       "type": 4,
-      "offset": 822794752,
-      "size": 9923668,
-      "count": 2480917,
+      "offset": 822856636,
+      "size": 9926960,
+      "count": 2481740,
       "start_height": 476969,
-      "end_height": 2957885
+      "end_height": 2958708
     },
     {
       "type": 5,
-      "offset": 832718420,
-      "size": 446,
+      "offset": 832783596,
+      "size": 606,
       "count": 1,
       "start_height": 476969,
-      "end_height": 2957885
+      "end_height": 2958708
     },
     {
       "type": 6,
-      "offset": 832718866,
+      "offset": 832784202,
       "size": 176,
       "count": 8,
       "start_height": 0,
@@ -66,11 +71,11 @@
     },
     {
       "type": 7,
-      "offset": 832719042,
-      "size": 1446938470,
-      "count": 2480917,
+      "offset": 832784378,
+      "size": 1447384536,
+      "count": 2481740,
       "start_height": 476969,
-      "end_height": 2957885
+      "end_height": 2958708
     }
   ]
 }

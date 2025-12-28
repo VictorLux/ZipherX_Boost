@@ -8,9 +8,9 @@ A single, comprehensive blockchain data file for instant ZipherX wallet synchron
 |----------|-------|
 | **Format** | ZBOOST01 (Unified Binary) |
 | **Version** | 1 |
-| **Chain Height** | 2,957,885 |
-| **File Size** | 2174.1 MB (uncompressed) |
-| **Created** | 2025-12-27 |
+| **Chain Height** | 2,958,708 |
+| **File Size** | 2025.5 MB (zstd), 2174.5 MB uncompressed (7% reduction) |
+| **Created** | 2025-12-28 |
 
 ## What's Inside?
 
@@ -18,10 +18,10 @@ The unified boost file contains **all data** needed for fast wallet synchronizat
 
 | Section | Count | Description |
 |---------|-------|-------------|
-| **Shielded Outputs** | 1,043,793 | Encrypted notes for trial decryption |
-| **Shielded Spends** | 433,101 | Nullifiers for spent note detection |
-| **Block Hashes** | 2,480,917 | For P2P header validation (Sapling onwards) |
-| **Block Timestamps** | 2,480,917 | For transaction date display |
+| **Shielded Outputs** | 1,043,840 | Encrypted notes for trial decryption |
+| **Shielded Spends** | 433,151 | Nullifiers for spent note detection |
+| **Block Hashes** | 2,481,740 | For P2P header validation (Sapling onwards) |
+| **Block Timestamps** | 2,481,740 | For transaction date display |
 | **Serialized Tree** | 478 bytes | Commitment tree state for instant load |
 | **Reliable Peers** | 9 | P2P bootstrap addresses |
 | **Block Headers** | 2,475,168 | FIX #413: Full headers with finalSaplingRoot for Tree Root Validation |
@@ -59,9 +59,9 @@ The unified boost file contains **all data** needed for fast wallet synchronizat
 ```
 [Header: 128 bytes]
 [Outputs Data: 1,043,793 × 684 = ~680.9 MB (includes received_in_tx)]
-[Spends Data: 433,101 × 36 = ~14.9 MB]
-[Hashes Data: 2,480,917 × 32 = ~75.7 MB]
-[Timestamps Data: 2,480,917 × 4 = ~9.5 MB]
+[Spends Data: 433,151 × 68 = ~28.1 MB (includes txid)]
+[Hashes Data: 2,481,740 × 32 = ~75.7 MB]
+[Timestamps Data: 2,481,740 × 4 = ~9.5 MB]
 [Tree Data: 478 bytes]
 [Peers Data: 195 bytes]
 [Headers Data: 2,475,168 × 140 = ~330.3 MB] (FIX #413)
@@ -85,11 +85,11 @@ All multi-byte integers are **little-endian** (matching wire format):
 
 | Section | Start Height | End Height | Notes |
 |---------|--------------|------------|-------|
-| Outputs | 476,969 | 2,957,885 | From Sapling activation |
-| Spends | 476,969 | 2,957,885 | From Sapling activation |
-| Hashes | 476,969 | 2,957,885 | From Sapling (no pre-Sapling hashes) |
-| Timestamps | 476,969 | 2,957,885 | From Sapling activation |
-| Tree | 476,969 | 2,957,885 | Sapling commitment tree |
+| Outputs | 476,969 | 2,958,708 | From Sapling activation |
+| Spends | 476,969 | 2,958,708 | From Sapling activation |
+| Hashes | 476,969 | 2,958,708 | From Sapling (no pre-Sapling hashes) |
+| Timestamps | 476,969 | 2,958,708 | From Sapling activation |
+| Tree | 476,969 | 2,958,708 | Sapling commitment tree |
 
 ## Verification
 
@@ -99,7 +99,7 @@ shasum -a 256 -c SHA256SUMS.txt
 
 # Or manually
 shasum -a 256 zipherx_boost_v1.bin
-# Expected: c3b674f38c4c4180eef5e3bb1d96abfde7454a75e10ec65f647e33090f37ca97
+# Expected: f1e61c390839ba1eff3e1c86b763de6dfff470b6467a4ad6285f5bf1a0bee131
 ```
 
 ## Usage
@@ -131,9 +131,9 @@ New wallets skip historical note scanning since there are no notes to find - onl
 | Property | Value |
 |----------|-------|
 | Sapling Activation | 476,969 |
-| Chain Height | 2,957,885 |
-| Block Hash | `00000506d568751a6b747ec1d3ab036d9db556c46a7cb31420a34aa25e6e1581` |
-| Tree Root | `68a6f50b529f1110177e7ee25c3af7496d075961083e2415b188f6a7f5189f5f` |
+| Chain Height | 2,958,708 |
+| Block Hash | `00000a70ed575d9765350b56e57edf16778e403d7de22bebbc7d2eb0bdbd5860` |
+| Tree Root | `2be27ee772c9b3cd8aa337b7029af2bc79ebf994a18bb3f75910755c9aa474e6` |
 
 ### Shielded Output Record (652 bytes)
 
@@ -160,9 +160,9 @@ struct ShieldedSpend {
 
 | Metric | Value |
 |--------|-------|
-| Generation Speed | 2,183 blocks/sec |
-| Total Blocks Scanned | 2,480,917 |
-| Generation Time | 18.9 minutes |
+| Generation Speed | 1,788 blocks/sec |
+| Total Blocks Scanned | 2,481,740 |
+| Generation Time | 23.1 minutes |
 | RPC Batch Size | 200 blocks |
 | Worker Threads | 48 |
 
